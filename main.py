@@ -13,12 +13,23 @@ def auto_check(path:str) -> str:
             return 'text/html'
         case 'js':
             return 'text/javascript'
+        case 'json':
+            return 'application/json'
+        case 'jpg':
+            return 'image/jpeg'
+        case 'jpeg':
+            return 'image/jpeg'
         case _:
-            return 'text/txt'
+            return 'text/plain'
 
-def get_file(filename:str) -> str:
-    with open(filename, 'r', encoding='utf-8') as file:
-        return file.read()
+def get_file(filename:str) -> bytes | str:
+    if filename.endswith(('.jpg', '.jpeg')):
+        with open(filename, 'rb') as file:
+            return file.read()
+    else:
+        with open(filename, 'r', encoding='utf-8') as file:
+            return file.read()
+
 
 @route.get('/')
 async def main_page(request:Request):
@@ -27,12 +38,14 @@ async def main_page(request:Request):
 @route.get('/{urlpath}')
 async def get(request:Request) -> Response:
     url = str(request.url)
-    fl = './html/'+url.split('/', 3)[-1]
+    fl = './html/'+url.split('/', 3)[-1].replace('?', '/')
     print(fl)
     if exists(fl):
         return Response(body=get_file(fl), content_type=auto_check(fl))
     else:
         return Response(status=404)
+
+
 
 if __name__ == '__main__':
     app.add_routes(route)
