@@ -1,0 +1,56 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('service?hdd.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff; /* Подберите цвет текста под фон */
+    text-align: center;
+    padding-top: 50px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Сделаем фон контейнера полупрозрачным */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.heart {
+    margin: 10px auto;
+}
+
+/* Сердечки сохранены, но цвет изменен на белый, чтобы были видны на темном фоне */
+.heart::before {
+    content: "卐";
+    color: #fff;
+    display: inline-block;
+    animation: pulse 1s infinite;
+    font-size: 100px;
+    line-height: 100px;
+}
+
+/* Та же анимация, но под контрастный цвет фона */
+@keyframes pulse {
+    0% {
+        transform: scale(0.75);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.75);
+    }
+}
