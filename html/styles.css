@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: "Nunito", sans-serif;
     background: #ffe6e6;
     text-align: center;
     padding-top: 50px;
@@ -32,6 +32,10 @@ p {
     color: #ff6666;
     font-size: 30px;
     margin: 10px auto;
+}
+
+.zdog-canvas {
+    cursor: move;
 }
 
 /* Дополнительно: анимация для сердечек */

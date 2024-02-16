@@ -5,24 +5,23 @@ app = Application()
 route = RouteTableDef()
 
 def auto_check(path:str) -> str:
-    print(path, path.split('.')[-1])
-    match path.split('.')[-1]:
-        case 'css':
-            return 'text/css'
-        case 'html':
-            return 'text/html'
-        case 'js':
-            return 'text/javascript'
-        case 'json':
-            return 'application/json'
-        case 'jpg':
-            return 'image/jpeg'
-        case 'jpeg':
-            return 'image/jpeg'
-        case _:
-            return 'text/plain'
+    fuck = path.split('.')[-1]
+    if fuck == 'css':
+        return 'text/css'
+    elif fuck == 'html':
+        return 'text/html'
+    elif fuck == 'js':
+        return 'text/javascript'
+    elif fuck == 'json':
+        return 'application/json'
+    elif fuck == 'jpg':
+        return 'image/jpeg'
+    elif fuck == 'jpeg':
+        return 'image/jpeg'
+    else:
+        return 'text/plain'
 
-def get_file(filename:str) -> bytes | str:
+def get_file(filename:str) -> bytes:
     if filename.endswith(('.jpg', '.jpeg')):
         with open(filename, 'rb') as file:
             return file.read()
@@ -49,4 +48,4 @@ async def get(request:Request) -> Response:
 
 if __name__ == '__main__':
     app.add_routes(route)
-    run_app(app, host='localhost', port=80)
+    run_app(app, host='185.39.31.83', port=80)
